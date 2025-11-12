@@ -4,6 +4,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { BotUpdate } from './bot.update';
 import { UserService } from '../services/user.service';
 import { KartaSoupService } from '../services/karta-soup.service';
+import { BarcodeService } from '../services/barcode.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from '../entities/user.entity';
 
@@ -18,6 +19,6 @@ import { User } from '../entities/user.entity';
     }),
     TypeOrmModule.forFeature([User]),
   ],
-  providers: [BotUpdate, UserService, KartaSoupService],
+  providers: [BotUpdate, UserService, KartaSoupService, BarcodeService],
 })
 export class BotModule {}

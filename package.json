@@ -26,7 +26,10 @@
     "pg": "^8.11.3",
     "axios": "^1.6.5",
     "reflect-metadata": "^0.2.2",
-    "rxjs": "^7.8.1"
+    "rxjs": "^7.8.1",
+    "@zxing/library": "^0.20.0",
+    "canvas": "^2.11.2",
+    "sharp": "^0.33.1"
   },
   "devDependencies": {
     "@nestjs/cli": "^10.3.0",
