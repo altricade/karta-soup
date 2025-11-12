@@ -25,11 +25,19 @@ FROM node:18-alpine
 WORKDIR /app
 
 RUN apk add --no-cache \
+    python3 \
+    make \
+    g++ \
     cairo \
+    cairo-dev \
     jpeg \
+    jpeg-dev \
     pango \
+    pango-dev \
     giflib \
-    pixman
+    giflib-dev \
+    pixman \
+    pixman-dev
 
 COPY package*.json ./
 
