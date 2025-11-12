@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: karta-soup-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: karta_soup
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - karta-soup-network
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: karta-soup-bot
+    restart: unless-stopped
+    environment:
+      TELEGRAM_BOT_TOKEN: ${TELEGRAM_BOT_TOKEN}
+      DATABASE_HOST: postgres
+      DATABASE_PORT: 5432
+      DATABASE_USER: postgres
+      DATABASE_PASSWORD: postgres
+      DATABASE_NAME: karta_soup
+      NODE_ENV: production
+    depends_on:
+      - postgres
+    networks:
+      - karta-soup-network
+    ports:
+      - "3000:3000"
+
+volumes:
+  postgres_data:
+
+networks:
+  karta-soup-network:
+    driver: bridge
