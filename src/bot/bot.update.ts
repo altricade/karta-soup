@@ -141,7 +141,7 @@ export class BotUpdate {
     const session = this.userSessions.get(telegramId);
 
     if (session?.awaitingCode) {
-      const code = ctx.message.text.trim();
+      const code = ctx.message.text.replace(/\s/g, "");
 
       const validationError = this.validateCardCode(code);
       if (validationError) {
